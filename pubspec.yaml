@@ -1,7 +1,6 @@
 name: posts_app
 description: "A Posts App Project"
 
-
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -16,11 +15,14 @@ dependencies:
   cupertino_icons: ^1.0.8
   bloc:
   flutter_bloc:
-  hive:
   cached_network_image:
   svg_flutter:
   intl:
   image_picker:
+  dio:
+  shared_preferences:
+  flutter_secure_storage:
+  equatable:
 
 
 dev_dependencies:

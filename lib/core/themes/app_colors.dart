@@ -10,6 +10,10 @@ class AppColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color grey = Color(0xFFA0A4A9);
   static const Color descriptionGreyColor = Color(0xFFA1A1A1);
+  static const Color kDividerColor = Color(0xFFE9E9E9);
+  static const Color lightGrey = Color(0xFFE6E6E6);
+  static const Color softPurple = Color(0xFFAA8CB6);
+  static const Color borderColor = Color(0xFFF0F0F0);
 
   static LinearGradient storyCircleGradient = const LinearGradient(
     begin: Alignment.topCenter,
