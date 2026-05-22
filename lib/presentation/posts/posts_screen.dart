@@ -7,6 +7,7 @@ import 'package:posts_app/data/posts/post.dart';
 import 'package:posts_app/features/posts/post_states.dart';
 import 'package:posts_app/presentation/common_widgets/ubunto_text.dart';
 import 'package:posts_app/presentation/posts/widgets/post_card.dart';
+import 'package:posts_app/presentation/posts/widgets/shimmers/post_card_shimmer.dart';
 import 'package:posts_app/presentation/posts/widgets/type_post_box.dart';
 import 'package:posts_app/presentation/common_widgets/circle_action_button.dart';
 
@@ -45,8 +46,15 @@ class PostsScreen extends StatelessWidget {
          listener: (context, state) {
         },
           builder: (context, state){
-            if(state is PostGetSuccess){
+            if (state is PostLoading){
+              return ListView.separated(
+                  itemCount: 6,
+                  itemBuilder: (context, _) => const PostCardShimmer(),
+                  separatorBuilder: (context, _) => SizedBox(height: 22,)
+              );
+            }else if(state is PostGetSuccess){
               List<Post> posts = state.posts;
+
               return RefreshIndicator(
                 onRefresh: ()=> context.read<PostCubit>().getPosts(),
                 backgroundColor: AppColors.white,
@@ -77,7 +85,6 @@ class PostsScreen extends StatelessWidget {
             return const Center(child: UbuntuText(text: "Something Went Wrong, Please try again latter!"),);
         }
       }
-
       ),
 
     );

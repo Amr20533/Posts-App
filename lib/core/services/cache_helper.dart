@@ -37,23 +37,24 @@ class CacheHelper{
     return [];
   }
 
-
-  static Future<void> saveProfileInfoToCache(ProfileResponseModel profileResponse) async {
+  static Future<void> saveProfileInfoToCache(ProfileResponseModel profileResponse, String userId) async {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
 
       final String jsonString = jsonEncode(profileResponse.toJson());
 
-      await prefs.setString(_profileInfoCacheKey, jsonString);
+      // Dynamic Key: 'user_profile_123'
+      await prefs.setString('$_profileInfoCacheKey$userId', jsonString);
     } catch (e) {
       debugPrint('Error writing Profile info to Cache: $e');
     }
   }
 
-  static Future<ProfileResponseModel?> getProfileInfoFromCache() async {
+  static Future<ProfileResponseModel?> getProfileInfoFromCache(String userId) async {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String? cachedString = prefs.getString(_profileInfoCacheKey);
+
+      final String? cachedString = prefs.getString('$_profileInfoCacheKey$userId');
 
       if (cachedString != null) {
         final Map<String, dynamic> decodedJson = jsonDecode(cachedString) as Map<String, dynamic>;

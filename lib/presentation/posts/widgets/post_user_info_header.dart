@@ -8,8 +8,8 @@ import 'package:posts_app/data/posts/post.dart';
 import 'package:posts_app/core/constants/api_constants.dart';
 import 'package:posts_app/core/utils/format_helper.dart';
 import 'package:posts_app/presentation/common_widgets/custom_cached_network_image.dart';
-import 'package:posts_app/presentation/common_widgets/default_error_snackbar.dart';
 import 'package:posts_app/presentation/common_widgets/ubunto_text.dart';
+import 'package:posts_app/presentation/posts/widgets/shimmers/profile_header_shimmer.dart';
 
 class PostUserInfoHeader extends StatelessWidget {
   const PostUserInfoHeader({
@@ -31,14 +31,14 @@ class PostUserInfoHeader extends StatelessWidget {
 
           }
           if (state is ProfileGetError) {
-            defaultErrorSnackBar(context, state.message);
+            debugPrint("something went wrong with profile ${state.message}");
           }
 
         },
         builder: (context, state){
 
           if (state is ProfileLoading){
-            return const Center(child: CircularProgressIndicator(color: AppColors.purple,),);
+            return const ProfileHeaderShimmer();
           }else if(state is ProfileGetSuccess){
 
             ProfileResponseModel? userInfo = state.profile;

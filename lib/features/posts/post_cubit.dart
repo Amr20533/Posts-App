@@ -11,7 +11,6 @@ class PostCubit extends Cubit<PostStates> {
   final ApiHelper _apiHelper = ApiHelper();
 
   PostCubit() : super(PostInitial());
-
   Future<void> getPosts() async {
     final currentState = state;
 
@@ -25,12 +24,10 @@ class PostCubit extends Cubit<PostStates> {
 
       if (response.statusCode == 200) {
         final postsResponseModel = PostsResponseModel.fromJson(response.data);
-
         final List<Post> freshPosts = postsResponseModel.posts ?? [];
 
         await CacheHelper.savePostsToCache(freshPosts);
         emit(PostGetSuccess(
-
           posts: freshPosts,
           isUploading: false,
         ));
@@ -39,7 +36,6 @@ class PostCubit extends Cubit<PostStates> {
       }
     } catch (error) {
       await _loadOfflineFallback(error.toString());
-      emit(PostGetError(message: error.toString()));
     }
   }
 
@@ -60,19 +56,11 @@ class PostCubit extends Cubit<PostStates> {
         final singleResponse = Post.fromJson(response.data);
 
         if (singleResponse.id != null) {
-          if (currentState is PostGetSuccess) {
-
-            final List<Post> updatedList = List<Post>.from(currentState.posts)
-              ..insert(0, singleResponse);
-
-            emit(PostGetSuccess(
-              posts: updatedList,
-              isUploading: false,
-            ));
+          getPosts();
+          emit(PostUploadSuccess());
           } else {
-            emit(PostGetSuccess(posts: [singleResponse]));
+          getPosts();
           }
-        }
       } else {
         _handleUploadError(currentState, 'Failed to Upload Post.');
       }
@@ -96,7 +84,7 @@ class PostCubit extends Cubit<PostStates> {
       emit(PostGetSuccess(
         posts: cachedPosts,
         isUploading: false,
-        errorMessage: 'You are currently offline. Showing cached posts.',
+        errorMessage: 'You are currently offline. We\'re Showing cached posts.',
       ));
     } else {
       emit(PostGetError(message: originalError));

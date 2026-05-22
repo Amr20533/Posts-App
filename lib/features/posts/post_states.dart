@@ -48,6 +48,7 @@ class PostGetError extends PostStates {
 }
 
 class PostUploadLoading extends PostStates {}
+class PostUploadSuccess extends PostStates {}
 
 class PostUploadError extends PostStates {
   final String message;
