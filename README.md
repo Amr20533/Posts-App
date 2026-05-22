@@ -6,6 +6,14 @@ Posts App is a mobile application built using Flutter framework which enables us
 - Users can Upload Posts.
 - Users can view others posts and their posts
 
+## How to run
+> Run the Clone Command
+-  `git clone https://github.com/Amr20533/Posts-App.git`
+> Open the Project
+-  `cd Posts-App`
+> Run the `flutter pub get` Command
+> then Run the `flutter run` Command
+
 ## Architectural Design
 Maybe it's not the best but it's still well structured, readable, and maintainable.
 ### Core:
