@@ -57,7 +57,7 @@ class PostCubit extends Cubit<PostStates> {
 
         if (singleResponse.id != null) {
           getPosts();
-          emit(PostUploadSuccess());
+          emit(PostUploadSuccess(userId: singleResponse.user));
           } else {
           getPosts();
           }

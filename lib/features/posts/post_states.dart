@@ -48,7 +48,10 @@ class PostGetError extends PostStates {
 }
 
 class PostUploadLoading extends PostStates {}
-class PostUploadSuccess extends PostStates {}
+class PostUploadSuccess extends PostStates {
+  final int? userId;
+  const PostUploadSuccess({this.userId});
+}
 
 class PostUploadError extends PostStates {
   final String message;

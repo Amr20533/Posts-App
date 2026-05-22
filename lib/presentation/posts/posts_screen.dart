@@ -5,6 +5,7 @@ import 'package:posts_app/features/posts/post_cubit.dart';
 import 'package:posts_app/core/themes/app_colors.dart';
 import 'package:posts_app/data/posts/post.dart';
 import 'package:posts_app/features/posts/post_states.dart';
+import 'package:posts_app/features/profile/profile_cubit.dart';
 import 'package:posts_app/presentation/common_widgets/ubunto_text.dart';
 import 'package:posts_app/presentation/posts/widgets/post_card.dart';
 import 'package:posts_app/presentation/posts/widgets/shimmers/post_card_shimmer.dart';
@@ -43,8 +44,14 @@ class PostsScreen extends StatelessWidget {
         ),
       ),
       body: BlocConsumer<PostCubit, PostStates>(
-         listener: (context, state) {
-        },
+          listener: (context, state) {
+            if (state is PostUploadSuccess) {
+
+              // ScaffoldMessenger.of(context).showSnackBar(
+              //     const SnackBar(content: Text('Post uploaded successfully!'))
+              // );
+            }
+          },
           builder: (context, state){
             if (state is PostLoading){
               return ListView.separated(
