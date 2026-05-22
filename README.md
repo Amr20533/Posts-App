@@ -1,16 +1,50 @@
-# posts_app
+# Project Overview
+Posts App is a mobile application built using Flutter framework which enables users to share their feelings in their posts, seamlessly create, share, and view social media posts.
 
-A new Flutter project.
+## Key Features
+- Users can login to the home screen.
+- Users can Upload Posts.
+- Users can view others posts and their posts
 
-## Getting Started
+## Architectural Design
+Maybe it's not the best but it's still well structured, readable, and maintainable.
+### Core:
+  - constants
+  - networks
+  - router
+  - services
+  - themes
+  - utils
+### Data:
+  - auth
+  - posts
+  - profile
+### Features (Logic & Cubits):
+  - auth
+  - posts
+  - profile
+### Presentation:
+  - auth
+  - common widgets
+  - posts
+  - start
 
-This project is a starting point for a Flutter application.
+## Packages Used
+- bloc --> For Bloc Statemanagement Implementation.
+- flutter_bloc --> For Bloc Statemanagement Implementation
+- cached_network_image --> For Managing Network Image Cache.
+- intl --> For handling date format appearance.
+- dio --> For performing CRUD operations and sending requests for the Restapi endpoints.
+- shared_preferences --> For Managing Local storage cache operations.
+- flutter_secure_storage --> For Securing Local storage cache sensitive data.
+- equatable --> To force Dart to compare the data inside the objects rather than the memory address of the objects.
+- skeletonizer --> To manage shimmer loadings for data loading status.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## API Documentation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Postman Documentation Link: 
+  https://www.postman.com/lively-desert-95265/workspace/posts-api/collection/22932829-d52219e6-0bc2-4e96-ba4a-4ecddab44a0d?action=share&creator=22932829
+
+- API Documentation Repo:
+  https://github.com/Amr20533/Posts-API.git
