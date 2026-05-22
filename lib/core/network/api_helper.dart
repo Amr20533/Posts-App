@@ -111,7 +111,7 @@ class ApiHelper {
     }
   }
 
-  // Local fallback error message handler
+  // Local error message handler
   String _handleDioError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:

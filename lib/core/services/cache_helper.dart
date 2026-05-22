@@ -43,7 +43,6 @@ class CacheHelper{
 
       final String jsonString = jsonEncode(profileResponse.toJson());
 
-      // Dynamic Key: 'user_profile_123'
       await prefs.setString('$_profileInfoCacheKey$userId', jsonString);
     } catch (e) {
       debugPrint('Error writing Profile info to Cache: $e');

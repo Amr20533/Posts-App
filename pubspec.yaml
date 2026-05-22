@@ -16,7 +16,6 @@ dependencies:
   bloc:
   flutter_bloc:
   cached_network_image:
-  svg_flutter:
   intl:
   dio:
   shared_preferences:

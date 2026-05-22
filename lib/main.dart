@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:posts_app/core/constants/app_routes.dart';
+import 'package:posts_app/core/themes/app_themes.dart';
 import 'package:posts_app/features/posts/post_cubit.dart';
 import 'package:posts_app/core/router/page_routes.dart';
-import 'package:posts_app/core/themes/app_colors.dart';
 import 'package:posts_app/features/auth/login_cubit.dart';
 
 void main() {
@@ -28,14 +28,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Posts App',
-        theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.white,
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            scrolledUnderElevation: 0
-          )
-        ),
+        theme: AppThemes().lightTheme,
         initialRoute: AppRoutes.splash,
         routes: pageRoutes,
       ),
